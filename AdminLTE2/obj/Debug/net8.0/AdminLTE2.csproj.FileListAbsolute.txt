@@ -250,3 +250,4 @@ C:\Users\Dell\source\repos\Practicas8vo\AdminLTE2\bin\Debug\net8.0\runtimes\win\
 C:\Users\Dell\source\repos\Practicas8vo\AdminLTE2\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\Dell\source\repos\Practicas8vo\AdminLTE2\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Dell\source\repos\Practicas8vo\AdminLTE2\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\Dell\source\repos\Practicas8vo\AdminLTE2\obj\Debug\net8.0\AdminLTE2.sourcelink.json

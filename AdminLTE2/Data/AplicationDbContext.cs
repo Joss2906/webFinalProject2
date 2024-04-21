@@ -16,6 +16,11 @@ namespace AdminLTE2.Data
         public DbSet<Countries> countries { get; set; }
         public DbSet<Employees> employees { get; set; }
         public DbSet<Inventories> inventories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Inventories>().HasKey(x => new { x.product_id, x.warehouse_id });
+        }
         public DbSet<Locations> locations { get; set; }
         public DbSet<Order_Items> order_items { get; set; }
         public DbSet<Orders> orders { get; set; }

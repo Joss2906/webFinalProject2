@@ -6,7 +6,6 @@
 <div class="container">
     <br />
     <h1 class="text-center">Contacts</h1>
-
     <div class="row">
         <div class="col-md-12">
             <p>
@@ -59,50 +58,92 @@
                                 </td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.contact_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                    <a asp-action="Details" asp-route-id="@item.contact_id" class="btn btn-sm btn-outline-success">Details</a>
-                                    <a asp-action="Delete" asp-route-id="@item.contact_id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.contact_id">
+                                        Details
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.contact_id">
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
+
+
+                            <div class="modal fade" id="detail-@item.contact_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Detail Contact</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <hr />
+                                                <dl class="row">
+                                                    <dt class="col-sm-4">
+                                                        First name
+                                                    </dt>
+                                                    <dd class="col-sm-8">
+                                                        @Html.DisplayFor(model => item.first_name)
+                                                    </dd>
+                                                    <dt class="col-sm-4">
+                                                        Last name
+                                                    </dt>
+                                                    <dd class="col-sm-8">
+                                                        @Html.DisplayFor(model => item.last_name)
+                                                    </dd>
+                                                    <dt class="col-sm-4">
+                                                        @Html.DisplayNameFor(model => item.email)
+                                                    </dt>
+                                                    <dd class="col-sm-8">
+                                                        @Html.DisplayFor(model => item.email)
+                                                    </dd>
+                                                    <dt class="col-sm-4">
+                                                        @Html.DisplayNameFor(model => item.phone)
+                                                    </dt>
+                                                    <dd class="col-sm-8">
+                                                        @Html.DisplayFor(model => item.phone)
+                                                    </dd>
+                                                    <dt class="col-sm-4">
+                                                        Customer
+                                                    </dt>
+                                                    <dd class="col-sm-8">
+                                                        @Html.DisplayFor(model => item.Customers.name)
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="delete-@item.contact_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>¿Seguro que quieres eliminar el contacto?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <a asp-action="Delete" asp-route-id="@item.contact_id" class="btn btn-danger">Confirmar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         }
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-    @* <div class="row justify-content-center">
-        <div class="col-md-12">
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    @if (Model.HasPreviousPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
-                        </li>
-                    }
-                    @for (int i = 1; i <= Model.TotalPages; i++)
-                    {
-                        if (i == 1 || i == Model.TotalPages || (Math.Abs(Model.PageIndex - i) <= 2))
-                        {
-                            <li class="@(i == Model.PageIndex ? "page-item active" : "page-item")">
-                                <a class="page-link" asp-action="Index" asp-route-pageNumber="@i">@i</a>
-                            </li>
-                        }
-                        else if (Math.Abs(Model.PageIndex - i) == 3)
-                        {
-                            <li class="page-item disabled">
-                                <span class="page-link">...</span>
-                            </li>
-                        }
-                    }
-                    @if (Model.HasNextPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
-                        </li>
-                    }
-                </ul>
-            </nav>
-        </div>
-    </div> *@
 </div>

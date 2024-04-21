@@ -1,0 +1,44 @@
+﻿@model AdminLTE2.Models.Orders
+
+@{
+    ViewData["Title"] = "Create order";
+}
+<br />
+<h1 class="text-center">Create new order</h1>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="order_date" class="control-label">Order date</label>
+                    <input asp-for="order_date" class="form-control" />
+                    <span asp-validation-for="order_date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="status" class="control-label">Status</label>
+                    <input asp-for="status" class="form-control" />
+                    <span asp-validation-for="status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="customer_id" class="control-label">Customer</label>
+                    <select asp-for="customer_id" class="form-control" asp-items="ViewBag.customer_id"></select>
+                    <span asp-validation-for="customer_id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="salesman_id" class="control-label">Salesman</label>
+                    <select asp-for="salesman_id" class="form-control" asp-items="ViewBag.salesman_id"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    </div>
+</div>
+
