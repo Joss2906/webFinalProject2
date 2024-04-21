@@ -12,7 +12,7 @@ namespace AdminLTE2.Models
         public string? state { get; set; }
 
         [ForeignKey("Countries")]
-        public char? country_id { get; set; }
+        public string? country_id { get; set; }
         public Countries? Countries { get; set; }
 
     }

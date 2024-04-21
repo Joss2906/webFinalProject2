@@ -1,0 +1,30 @@
+﻿@model AdminLTE2.Models.Regions;
+@{
+    ViewData["Title"] = "Create Regions";
+}
+<br />
+<div class="container">
+    <h2 class="text-center">Create new Regions</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="action" value="add" />
+                <div class="form-group">
+                    <label asp-for="region_name" class="control-label">region name</label>
+                    <input asp-for="region_name" class="form-control" />
+                    <span asp-validation-for="region_name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+
+    </div>
+</div>

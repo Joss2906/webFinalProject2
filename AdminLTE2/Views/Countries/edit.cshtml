@@ -1,0 +1,41 @@
+﻿@model AdminLTE2.Models.Countries
+
+@{
+    ViewData["Title"] = "Edit Countries";
+}
+<br />
+<div class="container">
+    <h2 class="text-center">Edit Countries</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="action" value="add" />
+                <div class="form-group">
+                    <label asp-for="country_name" class="control-label">country_name</label>
+                    <input asp-for="country_name" class="form-control" />
+                    <span asp-validation-for="country_name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="region_id" class="control-label">Region</label>
+                    <select asp-for="region_id" class="form-control" asp-items="ViewBag.region_id"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save changes" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+
+    </div>
+</div>
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@

@@ -17,6 +17,7 @@ namespace AdminLTE2.Data
         public DbSet<Employees> employees { get; set; }
         public DbSet<Inventories> inventories { get; set; }
         public DbSet<Locations> locations { get; set; }
+        public object Locations { get; internal set; }
         public DbSet<Order_Items> order_items { get; set; }
         public DbSet<Orders> orders { get; set; }
         public DbSet<Product_Categories> product_categories { get; set; }

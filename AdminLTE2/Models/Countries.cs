@@ -4,8 +4,10 @@ namespace AdminLTE2.Models
 {
     public class Countries
     {
+        //internal string countries_id;
+
         [Key]
-        public char country_id { get; set; }
+        public string country_id { get; set; }
         public string country_name { get; set; }
 
         [ForeignKey("Regions")]
