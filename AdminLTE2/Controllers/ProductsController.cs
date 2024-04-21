@@ -54,7 +54,6 @@ namespace AdminLTE2.Controllers
                 TempData["mensaje"] = "El Producto se guardo correctamente";
                 return RedirectToAction("Index");
             }
-            //ViewData["customer_id"] = new SelectList(_context.customers, "customer_id", "name", products.customer_id);
             return View(products);
         }
 
@@ -76,8 +75,6 @@ namespace AdminLTE2.Controllers
                 return RedirectToAction("Index");
             }
             return View(products);
-
-
         }
 
         public IActionResult Delete(int? id)
@@ -87,7 +84,9 @@ namespace AdminLTE2.Controllers
                 return NotFound();
             }
 
-            _context.products.Remove(_context.products.Find(id));
+            var products = _context.products.Where(p => p.product_id == id).FirstOrDefault();  
+
+            _context.products.Remove(products);
             _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

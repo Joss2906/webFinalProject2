@@ -20,6 +20,7 @@ namespace AdminLTE2.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Inventories>().HasKey(x => new { x.product_id, x.warehouse_id });
+            modelBuilder.Entity<Order_Items>().HasKey(x => new { x.order_id, x.item_id });
         }
         public DbSet<Locations> locations { get; set; }
         public DbSet<Order_Items> order_items { get; set; }

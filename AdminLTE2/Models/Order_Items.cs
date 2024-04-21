@@ -4,12 +4,15 @@ namespace AdminLTE2.Models
 {
     public class Order_Items
     {
-        [Key]
+        [Key, Column(Order = 1)]
         [ForeignKey("Orders")]
         public int order_id { get; set; }
         public Orders? Orders { get; set; }
+        
+        [Key, Column(Order = 2)]
         public int item_id { get; set; }
 
+        
         [ForeignKey("Products")]
         public int product_id { get; set; }
         public Products? Products { get; set; }

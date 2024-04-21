@@ -12,9 +12,10 @@ namespace AdminLTE2.Models
         public string phone { get; set; }
         public DateTime? hire_date { get; set; }
 
-        [ForeignKey("Employees")]
+        [ForeignKey("Managers")]
         public int? manager_id { get; set; }
-
+        public Employees? Managers { get; set; }
+        
         public string job_title { get; set;}
 
     }

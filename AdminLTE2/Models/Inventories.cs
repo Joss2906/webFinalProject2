@@ -9,13 +9,11 @@ namespace AdminLTE2.Models
     public class Inventories
     {
         [Key, Column(Order = 1)]
-        
-        //[JsonPropertyName("product_id")]
         [ForeignKey("Products")]
         public int product_id { get; set; }
         public Products? Products { get; set; }
+
         [Key, Column(Order = 2)]
-        //[JsonPropertyName("warehouse_id")]
         [ForeignKey("Warehouses")]
         public int warehouse_id { get; set; }
         public Warehouses? Warehouses { get; set; }

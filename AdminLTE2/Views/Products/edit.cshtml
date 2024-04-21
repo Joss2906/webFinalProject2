@@ -10,7 +10,7 @@
         <h2 class="text-center">Edit product</h2>
         <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="product_id" />
@@ -20,7 +20,7 @@
                         <span asp-validation-for="product_name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="description" class="control-label"></label>
+                        <label asp-for="description" class="control-label">Description</label>
                         <input asp-for="description" class="form-control" />
                         <span asp-validation-for="description" class="text-danger"></span>
                     </div>

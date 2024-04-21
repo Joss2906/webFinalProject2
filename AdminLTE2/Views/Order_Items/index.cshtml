@@ -1,13 +1,12 @@
-﻿@model IEnumerable<AdminLTE2.Models.Products>
-
+﻿@model IEnumerable<AdminLTE2.Models.Order_Items>
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Order Items";
 }
 
 <br />
 <div class="content-wrapper">
     <div class="container">
-        <h1 class="text-center">Products</h1>
+        <h1 class="text-center">Order Items</h1>
         <div class="row">
             <div class="col-md-12">
                 <p>
@@ -18,16 +17,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Product name
+                                    Order No.
                                 </th>
                                 <th>
-                                    Standard cost
+                                    Product
                                 </th>
                                 <th>
-                                    List price
+                                    Quantity
                                 </th>
                                 <th>
-                                    Category
+                                    Unit Price
                                 </th>
                                 <th></th>
                             </tr>
@@ -37,34 +36,34 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.product_name)
+                                        @item.order_id
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.standard_cost)
+                                        @item.Products.product_name
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.list_price)
+                                        @item.quantity
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Product_Categories.category_name)
+                                        @item.unit_price
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.product_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.product_id">
+                                        <a asp-action="Edit" asp-route-o_id="@item.order_id" asp-route-i_id="@item.item_id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.order_id-@item.item_id">
                                             Details
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.product_id">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.order_id-@item.item_id">
                                             Delete
                                         </button>
                                     </td>
                                 </tr>
 
 
-                                <div class="modal fade" id="detail-@item.product_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="detail-@item.order_id-@item.item_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Detail Product</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Inventory</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -74,35 +73,31 @@
                                                     <hr />
                                                     <dl class="row">
                                                         <dt class="col-sm-4">
-                                                            Product Name
+                                                            Order No.
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.product_name)
+                                                            @Html.DisplayFor(model => item.order_id)
                                                         </dd>
                                                         <dt class="col-sm-4">
-                                                            Description
+                                                            Product
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.description)
+                                                            @Html.DisplayFor(model => item.Products.product_name)
+                                                        </dd>
+                                                        
+                                                        <dt class="col-sm-4">
+                                                            Quantity
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.quantity)
                                                         </dd>
                                                         <dt class="col-sm-4">
-                                                            Cost
+                                                            Unit Price
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.standard_cost)
+                                                            @Html.DisplayFor(model => item.unit_price)
                                                         </dd>
-                                                        <dt class="col-sm-4">
-                                                            List Price
-                                                        </dt>
-                                                        <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.list_price)
-                                                        </dd>
-                                                        <dt class="col-sm-4">
-                                                            Category
-                                                        </dt>
-                                                        <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.Product_Categories.category_name)
-                                                        </dd>
+                                                        
                                                     </dl>
                                                 </div>
                                             </div>
@@ -113,7 +108,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="delete-@item.product_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="delete-@item.order_id-@item.item_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -123,11 +118,11 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>¿Seguro que quieres eliminar el producto?</p>
+                                                <p>¿Seguro que quieres eliminar el inventario?</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                <a asp-action="Delete" asp-route-id="@item.product_id" class="btn btn-danger">Confirmar</a>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <a asp-action="Delete" asp-route-o_id="@item.order_id" asp-route-i_id="@item.item_id" class="btn btn-danger">Confirmar</a>
                                             </div>
                                         </div>
                                     </div>

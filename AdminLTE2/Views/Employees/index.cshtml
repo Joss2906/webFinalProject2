@@ -1,13 +1,11 @@
-﻿@model IEnumerable<AdminLTE2.Models.Products>
-
+﻿@model IEnumerable<AdminLTE2.Models.Employees>
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Employees";
 }
-
 <br />
 <div class="content-wrapper">
     <div class="container">
-        <h1 class="text-center">Products</h1>
+        <h1 class="text-center">Employees</h1>
         <div class="row">
             <div class="col-md-12">
                 <p>
@@ -18,16 +16,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Product name
+                                    First Name
                                 </th>
                                 <th>
-                                    Standard cost
+                                    Last Name
                                 </th>
                                 <th>
-                                    List price
+                                    Job Title
                                 </th>
                                 <th>
-                                    Category
+                                    Manager
                                 </th>
                                 <th></th>
                             </tr>
@@ -37,34 +35,35 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.product_name)
+                                        @Html.DisplayFor(modelItem => item.first_name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.standard_cost)
+                                        @Html.DisplayFor(modelItem => item.last_name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.list_price)
+                                        @Html.DisplayFor(modelItem => item.job_title)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Product_Categories.category_name)
+                                        @Html.DisplayFor(modelItem => item.Managers.first_name)
+                                        @Html.DisplayFor(modelItem => item.Managers.last_name)
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.product_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.product_id">
+                                        <a asp-action="Edit" asp-route-id="@item.employee_id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.employee_id">
                                             Details
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.product_id">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.employee_id">
                                             Delete
                                         </button>
                                     </td>
                                 </tr>
 
 
-                                <div class="modal fade" id="detail-@item.product_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="detail-@item.employee_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Detail Product</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Employee</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -74,35 +73,48 @@
                                                     <hr />
                                                     <dl class="row">
                                                         <dt class="col-sm-4">
-                                                            Product Name
+                                                            First Name
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.product_name)
+                                                            @Html.DisplayFor(model => item.first_name)
                                                         </dd>
                                                         <dt class="col-sm-4">
-                                                            Description
+                                                            Last Name
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.description)
+                                                            @Html.DisplayFor(model => item.last_name)
                                                         </dd>
                                                         <dt class="col-sm-4">
-                                                            Cost
+                                                            Email
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.standard_cost)
+                                                            @Html.DisplayFor(model => item.email)
                                                         </dd>
                                                         <dt class="col-sm-4">
-                                                            List Price
+                                                            Phone
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.list_price)
+                                                            @Html.DisplayFor(model => item.phone)
                                                         </dd>
                                                         <dt class="col-sm-4">
-                                                            Category
+                                                            Manager
                                                         </dt>
                                                         <dd class="col-sm-8">
-                                                            @Html.DisplayFor(model => item.Product_Categories.category_name)
+                                                            @Html.DisplayFor(model => item.Managers.first_name) 
+                                                            @Html.DisplayFor(model => item.Managers.last_name)
                                                         </dd>
+                                                        <dt class="col-sm-4">
+                                                            Job Title
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.job_title)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            Hire Date
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.hire_date)
+                                                        </dd>                                          
                                                     </dl>
                                                 </div>
                                             </div>
@@ -113,7 +125,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="delete-@item.product_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="delete-@item.employee_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -123,11 +135,11 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>¿Seguro que quieres eliminar el producto?</p>
+                                                <p>¿Seguro que quieres eliminar el empleado?</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                <a asp-action="Delete" asp-route-id="@item.product_id" class="btn btn-danger">Confirmar</a>
+                                                <a asp-action="Delete" asp-route-id="@item.employee_id" class="btn btn-danger">Confirmar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -140,3 +152,4 @@
         </div>
     </div>
 </div>
+
