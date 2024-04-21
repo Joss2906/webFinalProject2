@@ -3,135 +3,133 @@
     ViewData["Title"] = "Customers";
 }
 <br />
-<div class="container">
-    <h1 class="text-center">Customers</h1>
-
-    <div class="row">
-        <div class="col-md-12">
-            <p>
-                <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
-            </p>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Address
-                            </th>
-                            <th>
-                                Website
-                            </th>
-                            <th>
-                                Credit limit
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+<div class="content-wrapper">
+    <div class="container">
+        <h1 class="text-center">Customers</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.address)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.website)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.credit_limit)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.customer_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.customer_id">
-                                        Details
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.customer_id">
-                                        Delete
-                                    </button>
-                                </td>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th>
+                                    Website
+                                </th>
+                                <th>
+                                    Credit limit
+                                </th>
+                                <th></th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.website)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.credit_limit)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.customer_id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.customer_id">
+                                            Details
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.customer_id">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
 
 
-                            <div class="modal fade" id="detail-@item.customer_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail Customer</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <hr />
-                                                <dl class="row">
-                                                    <dt class="col-sm-4">
-                                                        Name
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.name)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        Address
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.address)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        @Html.DisplayNameFor(model => item.website)
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.website)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        @Html.DisplayNameFor(model => item.credit_limit)
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.credit_limit)
-                                                    </dd>
-                                                 
-                                                </dl>
+                                <div class="modal fade" id="detail-@item.customer_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Customer</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <hr />
+                                                    <dl class="row">
+                                                        <dt class="col-sm-4">
+                                                            Name
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.name)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            Address
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.address)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            @Html.DisplayNameFor(model => item.website)
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.website)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            @Html.DisplayNameFor(model => item.credit_limit)
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.credit_limit)
+                                                        </dd>                                                 
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="modal fade" id="delete-@item.customer_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>¿Seguro que quieres eliminar el cliente?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            <a asp-action="Delete" asp-route-id="@item.customer_id" class="btn btn-danger">Confirmar</a>
+                                <div class="modal fade" id="delete-@item.customer_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Seguro que quieres eliminar el cliente?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                <a asp-action="Delete" asp-route-id="@item.customer_id" class="btn btn-danger">Confirmar</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                    </tbody>
-                </table>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
-
 

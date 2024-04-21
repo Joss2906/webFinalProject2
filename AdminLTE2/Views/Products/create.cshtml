@@ -1,0 +1,51 @@
+﻿@model AdminLTE2.Models.Products
+
+@{
+    ViewData["Title"] = "Create product";
+}
+<br />
+<div class="content-wrapper">
+    <div class="container">
+        <h1 class="text-center">Create new products</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="product_name" class="control-label">Product name</label>
+                        <input asp-for="product_name" class="form-control" />
+                        <span asp-validation-for="product_name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="description" class="control-label"></label>
+                        <input asp-for="description" class="form-control" />
+                        <span asp-validation-for="description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="standard_cost" class="control-label">Standard cost</label>
+                        <input asp-for="standard_cost" class="form-control" />
+                        <span asp-validation-for="standard_cost" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="list_price" class="control-label">List price</label>
+                        <input asp-for="list_price" class="form-control" />
+                        <span asp-validation-for="list_price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="category_id" class="control-label">Category</label>
+                        <select asp-for="category_id" class ="form-control" asp-items="ViewBag.category_id"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+

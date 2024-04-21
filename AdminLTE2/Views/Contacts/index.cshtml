@@ -2,148 +2,150 @@
 @{
     ViewData["Title"] = "Contacts";
 }
-
-<div class="container">
-    <br />
-    <h1 class="text-center">Contacts</h1>
-    <div class="row">
-        <div class="col-md-12">
-            <p>
-                <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
-            </p>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                First name
-                            </th>
-                            <th>
-
-                                Last name
-                            </th>
-                            <th>
-
-                                Email
-                            </th>
-                            <th>
-
-                                Phone
-                            </th>
-                            <th>
-
-                                Customers
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+<div class="content-wrapper">
+    <div class="container">
+        <br />
+        <h1 class="text-center">Contacts</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.first_name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.last_name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.phone)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Customers.name)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.contact_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.contact_id">
-                                        Details
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.contact_id">
-                                        Delete
-                                    </button>
-                                </td>
+                                <th>
+                                    First name
+                                </th>
+                                <th>
+
+                                    Last name
+                                </th>
+                                <th>
+
+                                    Email
+                                </th>
+                                <th>
+
+                                    Phone
+                                </th>
+                                <th>
+
+                                    Customers
+                                </th>
+                                <th></th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.first_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.last_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Customers.name)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.contact_id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.contact_id">
+                                            Details
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.contact_id">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
 
 
-                            <div class="modal fade" id="detail-@item.contact_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail Contact</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <hr />
-                                                <dl class="row">
-                                                    <dt class="col-sm-4">
-                                                        First name
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.first_name)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        Last name
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.last_name)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        @Html.DisplayNameFor(model => item.email)
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.email)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        @Html.DisplayNameFor(model => item.phone)
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.phone)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        Customer
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.Customers.name)
-                                                    </dd>
-                                                </dl>
+                                <div class="modal fade" id="detail-@item.contact_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Contact</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <hr />
+                                                    <dl class="row">
+                                                        <dt class="col-sm-4">
+                                                            First name
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.first_name)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            Last name
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.last_name)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            @Html.DisplayNameFor(model => item.email)
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.email)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            @Html.DisplayNameFor(model => item.phone)
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.phone)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            Customer
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.Customers.name)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="modal fade" id="delete-@item.contact_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>¿Seguro que quieres eliminar el contacto?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            <a asp-action="Delete" asp-route-id="@item.contact_id" class="btn btn-danger">Confirmar</a>
+                                <div class="modal fade" id="delete-@item.contact_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Seguro que quieres eliminar el contacto?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                <a asp-action="Delete" asp-route-id="@item.contact_id" class="btn btn-danger">Confirmar</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                    </tbody>
-                </table>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+

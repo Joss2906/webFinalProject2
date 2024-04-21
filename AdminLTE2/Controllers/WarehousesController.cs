@@ -21,7 +21,12 @@ namespace AdminLTE2.Controllers
 
         public IActionResult Create()
         {
-            ViewData["customer_id"] = new SelectList(_context.customers, "customer_id", "name");
+            var locations = _context.locations.Select(l => new {
+                l.location_id,
+                FullAddress = $"{l.address}, {l.postal_code} ,{l.city}, {l.state}, {l.country_id}"
+            }).ToList();
+
+            ViewData["location_id"] = new SelectList(locations, "location_id", "FullAddress");
             return View();
         }
 
@@ -37,7 +42,13 @@ namespace AdminLTE2.Controllers
             {
                 return NotFound();
             }
-            ViewData["location_id"] = new SelectList(_context.locations, "location_id", "address", warehouses.location_id);
+
+            var locations = _context.locations.Select(l => new {
+                l.location_id,
+                FullAddress = $"{l.address}, {l.postal_code} ,{l.city}, {l.state}, {l.country_id}"
+            }).ToList();
+
+            ViewData["location_id"] = new SelectList(locations, "location_id", "FullAddress", warehouses.location_id);
             
             return View(warehouses);
         }
@@ -52,7 +63,7 @@ namespace AdminLTE2.Controllers
                 _context.warehouses.AddAsync(warehouses);
                 _context.SaveChangesAsync();
 
-                TempData["mensaje"] = "El Contacto se guardo correctamente";
+                TempData["mensaje"] = "El Almacén se guardo correctamente";
                 return RedirectToAction("Index");
             }
 
@@ -74,7 +85,7 @@ namespace AdminLTE2.Controllers
                 _context.Update(warehouses);
                 _context.SaveChangesAsync();
 
-                TempData["mensaje"] = "El Contacto se actualizo correctamente";
+                TempData["mensaje"] = "El Almacén se actualizo correctamente";
                 return RedirectToAction("Index");
             }
             return View(warehouses);
@@ -89,7 +100,9 @@ namespace AdminLTE2.Controllers
                 return NotFound();
             }
 
-            _context.warehouses.Remove(_context.warehouses.Find(id));
+            var warehouses = _context.warehouses.Where(w => w.warehouse_id == id).FirstOrDefault();
+
+            _context.warehouses.Remove(warehouses);
             _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

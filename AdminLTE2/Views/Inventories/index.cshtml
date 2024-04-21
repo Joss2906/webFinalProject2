@@ -4,125 +4,124 @@
 }
 
 <br />
-<div class="container">
-    <br />
-    <h1 class="text-center">Inventories</h1>
-    <div class="row">
-        <div class="col-md-12">
-            <p>
-                <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
-            </p>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                Product
-                            </th>
-                            <th>
-                                Warehouse
-                            </th>
-                            <th>
-                                Quantity
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+<div class="content-wrapper">
+    <div class="container">
+        <h1 class="text-center">Inventories</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>
-                                    @* @Html.DisplayFor(modelItem => item.Products.product_name) *@
-                                    @item.Products.product_name
-                                </td>
-                                <td>
-                                    @* @Html.DisplayFor(modelItem => item.Warehouses.warehouse_name) *@
-                                    @item.Warehouses.warehouse_name
-                                </td>
-                                <td>
-                                    @* @Html.DisplayFor(modelItem => item.quantity) *@
-                                    @item.quantity
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-p_id="@item.product_id" asp-route-w_id="@item.warehouse_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.product_id-@item.warehouse_id">
-                                        Details
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.product_id-@item.warehouse_id">
-                                        Delete
-                                    </button>
-                                </td>
+                                <th>
+                                    Product
+                                </th>
+                                <th>
+                                    Warehouse
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th></th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @* @Html.DisplayFor(modelItem => item.Products.product_name) *@
+                                        @item.Products.product_name
+                                    </td>
+                                    <td>
+                                        @* @Html.DisplayFor(modelItem => item.Warehouses.warehouse_name) *@
+                                        @item.Warehouses.warehouse_name
+                                    </td>
+                                    <td>
+                                        @* @Html.DisplayFor(modelItem => item.quantity) *@
+                                        @item.quantity
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-p_id="@item.product_id" asp-route-w_id="@item.warehouse_id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.product_id-@item.warehouse_id">
+                                            Details
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.product_id-@item.warehouse_id">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
 
 
-                            <div class="modal fade" id="detail-@item.product_id-@item.warehouse_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail Inventory</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div>
-                                                <hr />
-                                                <dl class="row">
-                                                    <dt class="col-sm-4">
-                                                        Product
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.Products.product_name)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        Warehouse
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.Warehouses.warehouse_name)
-                                                    </dd>
-                                                    <dt class="col-sm-4">
-                                                        @Html.DisplayNameFor(model => item.quantity)
-                                                    </dt>
-                                                    <dd class="col-sm-8">
-                                                        @Html.DisplayFor(model => item.quantity)
-                                                    </dd>
-                                                    
-                                                </dl>
+                                <div class="modal fade" id="detail-@item.product_id-@item.warehouse_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Inventory</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <hr />
+                                                    <dl class="row">
+                                                        <dt class="col-sm-4">
+                                                            Product
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.Products.product_name)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            Warehouse
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.Warehouses.warehouse_name)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            @Html.DisplayNameFor(model => item.quantity)
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.quantity)
+                                                        </dd>
+                                                        
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="modal fade" id="delete-@item.product_id-@item.warehouse_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>¿Seguro que quieres eliminar el inventario?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                            <a asp-action="Delete" asp-route-p_id="@item.product_id" asp-route-w_id="@item.warehouse_id" class="btn btn-danger">Confirmar</a>
+                                <div class="modal fade" id="delete-@item.product_id-@item.warehouse_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Seguro que quieres eliminar el inventario?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <a asp-action="Delete" asp-route-p_id="@item.product_id" asp-route-w_id="@item.warehouse_id" class="btn btn-danger">Confirmar</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                    </tbody>
-                </table>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-
-  
 </div>

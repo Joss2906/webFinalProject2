@@ -4,76 +4,42 @@
     ViewData["Title"] = "Regions";
 }
 <br />
-<div class="container">
-    <h1 class="text-center">Regions</h1>
-    <div class="row">
-        <div class="col-md-12">
-            <p>
-                <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
-            </p>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                Region name
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+<div class="content-wrapper">
+    <div class="container">
+        <h1 class="text-center">Regions</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.region_name)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.region_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                    <a asp-action="Details" asp-route-id="@item.region_id" class="btn btn-sm btn-outline-success">Details</a>
-                                    <a asp-action="Delete" asp-route-id="@item.region_id" class="btn btn-sm btn-outline-danger">Delete</a>
-                                </td>
+                                <th>
+                                    Region name
+                                </th>
+                                <th></th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.region_name)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.region_id" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <a asp-action="Details" asp-route-id="@item.region_id" class="btn btn-sm btn-outline-success">Details</a>
+                                        <a asp-action="Delete" asp-route-id="@item.region_id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-
-    @* <div class="row justify-content-center">
-        <div class="col-md-12">
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    @if (Model.HasPreviousPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)">Previous</a>
-                        </li>
-                    }
-                    @for (int i = 1; i <= Model.TotalPages; i++)
-                    {
-                        if (i == 1 || i == Model.TotalPages || (Math.Abs(Model.PageIndex - i) <= 2))
-                        {
-                            <li class="@(i == Model.PageIndex ? "page-item active" : "page-item")">
-                                <a class="page-link" asp-action="Index" asp-route-pageNumber="@i">@i</a>
-                            </li>
-                        }
-                        else if (Math.Abs(Model.PageIndex - i) == 3)
-                        {
-                            <li class="page-item disabled">
-                                <span class="page-link">...</span>
-                            </li>
-                        }
-                    }
-                    @if (Model.HasNextPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)">Next</a>
-                        </li>
-                    }
-                </ul>
-            </nav>
-        </div>
-    </div> *@
 </div>
