@@ -55,10 +55,88 @@
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.location_id" class="btn btn-sm btn-outline-warning">Edit</a>
-                                        <a asp-action="Details" asp-route-id="@item.location_id" class="btn btn-sm btn-outline-success">Details</a>
-                                        <a asp-action="Delete" asp-route-id="@item.location_id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#detail-@item.location_id">
+                                            Details
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-@item.location_id">
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
+
+
+                                <div class="modal fade" id="detail-@item.location_id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Location</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <hr />
+                                                    <dl class="row">
+                                                        <dt class="col-sm-4">
+                                                            Address
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.address)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            Postal code
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.postal_code)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            City
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.city)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            State
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.state)
+                                                        </dd>
+                                                        <dt class="col-sm-4">
+                                                            Country
+                                                        </dt>
+                                                        <dd class="col-sm-8">
+                                                            @Html.DisplayFor(model => item.Countries.country_name)
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="delete-@item.location_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">Mensaje de confirmación</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Seguro que quieres eliminar la direccion?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                <a asp-action="Delete" asp-route-id="@item.location_id" class="btn btn-danger">Confirmar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             }
                         </tbody>
                     </table>
@@ -67,3 +145,4 @@
         </div>
     </div>
 </div>
+

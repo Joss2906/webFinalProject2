@@ -46,16 +46,16 @@ namespace AdminLTE2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Contacts contacts)
         {
-           
+            
             if (ModelState.IsValid)
             {
                 _context.contacts.AddAsync(contacts);
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Contacto se guardo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
-            //ViewData["customer_id"] = new SelectList(_context.customers, "customer_id", "name", contacts.customer_id);
+            
             return View(contacts);
         }
 
@@ -74,7 +74,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Contacto se actualizo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(contacts);
 
@@ -91,7 +91,7 @@ namespace AdminLTE2.Controllers
             _context.contacts.Remove(_context.contacts.Find(id));
             _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

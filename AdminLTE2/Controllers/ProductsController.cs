@@ -52,7 +52,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Producto se guardo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(products);
         }
@@ -72,7 +72,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Producto se actualizo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(products);
         }
@@ -89,7 +89,7 @@ namespace AdminLTE2.Controllers
             _context.products.Remove(products);
             _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -63,7 +63,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Empleado se guardo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(employees);
         }
@@ -83,7 +83,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Empleado se actualizo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(employees);
 
@@ -101,7 +101,7 @@ namespace AdminLTE2.Controllers
             _context.employees.Remove(employees);
             _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

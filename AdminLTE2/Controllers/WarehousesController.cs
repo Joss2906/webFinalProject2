@@ -64,7 +64,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Almacén se guardo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             ViewData["location_id"] = new SelectList(_context.locations, "location_id", "address", warehouses.location_id);
@@ -86,7 +86,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Almacén se actualizo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(warehouses);
 
@@ -105,7 +105,7 @@ namespace AdminLTE2.Controllers
             _context.warehouses.Remove(warehouses);
             _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

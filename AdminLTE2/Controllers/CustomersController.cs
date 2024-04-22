@@ -91,7 +91,7 @@ namespace AdminLTE2.Controllers
             _context.customers.Remove(customers);
             _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
 
             //return RedirectToAction(nameof(Index));
         }

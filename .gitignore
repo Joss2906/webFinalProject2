@@ -1,1 +1,5 @@
 .vs/
+AdminLTE2/obj/Debug/net8.0/
+AdminLTE2/bin/Debug/net8.0/
+AdminLTE2/obj/Release/net8.0/
+AdminLTE2/bin/Release/net8.0/

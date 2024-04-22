@@ -60,7 +60,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Inventario se guardo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             return View(inventories);
@@ -72,7 +72,6 @@ namespace AdminLTE2.Controllers
         public IActionResult Edit(Inventories inventories)
         {
             //print inventories
-            Console.WriteLine(inventories.ToString);
             //if (id != inventories.product_id)
             //{
             //    return NotFound();
@@ -84,7 +83,7 @@ namespace AdminLTE2.Controllers
                 _context.SaveChangesAsync();
 
                 TempData["mensaje"] = "El Inventario se actualizo correctamente";
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             //return View(inventories);
             return View();
@@ -103,7 +102,7 @@ namespace AdminLTE2.Controllers
             _context.inventories.Remove(inventories);
             _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }
